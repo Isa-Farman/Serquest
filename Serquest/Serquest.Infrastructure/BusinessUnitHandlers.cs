@@ -58,10 +58,7 @@ public class BusinessUnitCommandHandler :
         parameters.Add("@Logo", request.Logo);
         parameters.Add("@District", request.District);
 
-        // sp_SQBusinessUnit_Insert ends with `SELECT SCOPE_IDENTITY()`, i.e. it returns
-        // a one-row/one-column result set — read it as a scalar query result, NOT an
-        // output parameter (the previous version declared an @NewId output parameter
-        // that the stored procedure never populated, which threw at runtime).
+       
         var newId = await connection.QuerySingleAsync<int>(
             "sp_SQBusinessUnit_Insert",
             parameters,

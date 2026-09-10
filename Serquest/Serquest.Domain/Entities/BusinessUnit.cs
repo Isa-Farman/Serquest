@@ -7,7 +7,6 @@ public class BusinessUnit
 {
     public int Id { get; set; }
 
-    // Renamed property to avoid CS0542 error while keeping JSON name matching Angular
     [JsonPropertyName("businessUnit")]
     public string BusinessUnitCode { get; set; } = string.Empty;
 
