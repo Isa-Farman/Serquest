@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="Serquest.Application/Serquest.Application.csproj" />
+  <Project Path="Serquest.Domain/Serquest.Domain.csproj" />
+  <Project Path="Serquest.Infrastructure/Serquest.Infrastructure.csproj" />
+  <Project Path="Serquest.Presentation/Serquest.Presentation.csproj" />
+</Solution>

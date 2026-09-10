@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<UserSecretsId>66340775-a601-49ca-a5ec-bea627cdd9b1</UserSecretsId>
+	</PropertyGroup>
+	<ItemGroup>
+	  <PackageReference Include="Dapper" Version="2.1.79" />
+	  <PackageReference Include="MediatR" Version="14.2.0" />
+	  <PackageReference Include="Microsoft.Data.SqlClient" Version="7.0.2" />
+	  <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="6.0.1" />
+	  <PackageReference Include="Swashbuckle.AspNetCore" Version="10.2.3" />
+	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\Serquest.Domain\Serquest.Domain.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="Properties\" />
+	</ItemGroup>
+</Project>

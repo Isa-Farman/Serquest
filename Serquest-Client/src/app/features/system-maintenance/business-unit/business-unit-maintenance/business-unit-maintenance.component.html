@@ -1,0 +1,232 @@
+<div class="maintenance-container">
+
+  <!-- Header: Title + Language + Add Button -->
+  <div class="header-row">
+    <h2 class="page-title">{{ 'BUSINESS_UNIT.TITLE' | translate }}</h2>
+
+    <div class="header-actions">
+      <select
+        class="lang-select"
+        [value]="currentLang()"
+        (change)="onLanguageChange($event)">
+        <option value="en">English</option>
+        <option value="si">සිංහල (Sinhala)</option>
+        <option value="ta">தமிழ் (Tamil)</option>
+      </select>
+
+      <button
+        *ngIf="!showInputPage()"
+        class="btn btn-primary"
+        (click)="onAddNew()">
+        {{ 'BUSINESS_UNIT.ADD_NEW' | translate }}
+      </button>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- Dual View Container -->
+  <div class="dual-view-container">
+
+    <!-- LEFT SIDE: GRID VIEW (60% Width on desktop) -->
+    <div class="grid-pane" [class.pane-contracted]="showInputPage()">
+      <div class="card p-3">
+        <h3 class="pane-title">{{ 'BUSINESS_UNIT.LIST_TITLE' | translate }}</h3>
+
+        <p-table
+          [value]="gridData()"
+          [loading]="isLoading()"
+          styleClass="p-datatable-sm p-datatable-gridlines p-datatable-striped"
+          responsiveLayout="scroll">
+
+          <ng-template pTemplate="header">
+            <tr>
+              <th pSortableColumn="businessUnit">
+                {{ 'BUSINESS_UNIT.CODE' | translate }} <p-sortIcon field="businessUnit"></p-sortIcon>
+              </th>
+              <th pSortableColumn="businessUnitName">
+                {{ 'BUSINESS_UNIT.NAME' | translate }} <p-sortIcon field="businessUnitName"></p-sortIcon>
+              </th>
+              <th pSortableColumn="district">
+                {{ 'BUSINESS_UNIT.DISTRICT' | translate }} <p-sortIcon field="district"></p-sortIcon>
+              </th>
+              <th pSortableColumn="isActive" class="text-center">
+                {{ 'BUSINESS_UNIT.STATUS' | translate }} <p-sortIcon field="isActive"></p-sortIcon>
+              </th>
+              <th class="text-center" style="width: 80px;">{{ 'BUSINESS_UNIT.ACTION' | translate }}</th>
+            </tr>
+          </ng-template>
+
+          <ng-template pTemplate="body" let-item>
+            <tr>
+              <td class="font-bold cell-dark">{{ item.businessUnit }}</td>
+              <td class="cell-dark">{{ item.businessUnitName }}</td>
+              <td class="cell-dark">{{ item.district }}</td>
+              <td class="text-center">
+                <span [class]="item.isActive ? 'status-active' : 'status-inactive'">
+                  {{ (item.isActive ? 'BUSINESS_UNIT.ACTIVE' : 'BUSINESS_UNIT.INACTIVE') | translate }}
+                </span>
+              </td>
+              <td class="text-center">
+                <button
+                  type="button"
+                  class="btn btn-outline-secondary btn-sm"
+                  (click)="onSelectRow(item)">
+                  {{ 'COMMON.EDIT' | translate }}
+                </button>
+              </td>
+            </tr>
+          </ng-template>
+
+          <ng-template pTemplate="emptymessage">
+            <tr>
+              <td colspan="5" class="text-center p-3 cell-dark">
+                {{ 'BUSINESS_UNIT.NO_RECORDS' | translate }}
+              </td>
+            </tr>
+          </ng-template>
+
+        </p-table>
+      </div>
+    </div>
+
+    <!-- RIGHT SIDE: WORKSPACE FORM PANEL (40% Width on desktop) -->
+    <div *ngIf="showInputPage()" class="form-pane">
+      <div class="card p-4">
+        <h3 class="pane-title mb-3">
+          {{ (isEditMode() ? 'BUSINESS_UNIT.EDIT_TITLE' : 'BUSINESS_UNIT.CREATE_TITLE') | translate }}
+        </h3>
+
+        <form (ngSubmit)="$event.preventDefault(); onSave()" #unitForm="ngForm">
+
+          <!-- Code Field (Max length 4, disabled during edit mode) -->
+          <div class="field mb-3">
+            <label for="TXT_BusinessUnit" class="font-medium">
+              {{ 'BUSINESS_UNIT.CODE' | translate }} <span class="required-star">*</span>
+            </label>
+            <input
+              id="TXT_BusinessUnit"
+              type="text"
+              pInputText
+              maxlength="4"
+              [disabled]="isEditMode()"
+              [ngModel]="formData().businessUnit"
+              (ngModelChange)="updateFormField('businessUnit', $event)"
+              name="TXT_BusinessUnit"
+              #codeControl="ngModel"
+              required />
+            <small *ngIf="codeControl.invalid && (codeControl.dirty || codeControl.touched)" class="error-text">
+              {{ 'VALIDATION.CODE_REQUIRED' | translate }}
+            </small>
+          </div>
+
+          <!-- Name Field -->
+          <div class="field mb-3">
+            <label for="TXT_BusinessUnitName" class="font-medium">
+              {{ 'BUSINESS_UNIT.NAME' | translate }} <span class="required-star">*</span>
+            </label>
+            <input
+              id="TXT_BusinessUnitName"
+              type="text"
+              pInputText
+              [ngModel]="formData().businessUnitName"
+              (ngModelChange)="updateFormField('businessUnitName', $event)"
+              name="TXT_BusinessUnitName"
+              #nameControl="ngModel"
+              required />
+            <small *ngIf="nameControl.invalid && (nameControl.dirty || nameControl.touched)" class="error-text">
+              {{ 'VALIDATION.NAME_REQUIRED' | translate }}
+            </small>
+          </div>
+
+          <!-- Address Line 1 -->
+          <div class="field mb-3">
+            <label for="TXT_AddressLine1" class="font-medium">
+              {{ 'BUSINESS_UNIT.ADDRESS' | translate }}
+            </label>
+            <input
+              id="TXT_AddressLine1"
+              type="text"
+              pInputText
+              [ngModel]="formData().addressLine1"
+              (ngModelChange)="updateFormField('addressLine1', $event)"
+              name="TXT_AddressLine1" />
+          </div>
+
+          <!-- Telephone Number -->
+          <div class="field mb-3">
+            <label for="TXT_TelephoneNumber" class="font-medium">
+              {{ 'BUSINESS_UNIT.PHONE' | translate }}
+            </label>
+            <input
+              id="TXT_TelephoneNumber"
+              type="text"
+              pInputText
+              [ngModel]="formData().telephoneNumber"
+              (ngModelChange)="updateFormField('telephoneNumber', $event)"
+              name="TXT_TelephoneNumber" />
+          </div>
+
+          <!-- District -->
+          <div class="field mb-3">
+            <label for="DRP_District" class="font-medium">
+              {{ 'BUSINESS_UNIT.DISTRICT' | translate }}
+            </label>
+            <input
+              id="DRP_District"
+              type="text"
+              pInputText
+              [ngModel]="formData().district"
+              (ngModelChange)="updateFormField('district', $event)"
+              name="DRP_District" />
+          </div>
+
+          <!-- Logo Field -->
+          <div class="field mb-3">
+            <label for="TXT_Logo" class="font-medium">
+              {{ 'BUSINESS_UNIT.LOGO' | translate }}
+            </label>
+            <input
+              id="TXT_Logo"
+              type="text"
+              pInputText
+              [ngModel]="formData().logo"
+              (ngModelChange)="updateFormField('logo', $event)"
+              name="TXT_Logo" />
+          </div>
+
+          <!-- Active Checkbox -->
+          <div class="checkbox-field mb-4">
+            <input
+              id="TGL_IsActive"
+              type="checkbox"
+              [ngModel]="formData().isActive"
+              (ngModelChange)="updateFormField('isActive', $event)"
+              name="TGL_IsActive" />
+            <label for="TGL_IsActive" class="cursor-pointer font-medium ms-2">
+              {{ 'BUSINESS_UNIT.ACTIVE' | translate }}
+            </label>
+          </div>
+
+          <!-- Form Action Buttons -->
+          <div class="button-group">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              (click)="onCancel()">
+              {{ 'COMMON.CANCEL' | translate }}
+            </button>
+            <button
+              type="submit"
+              class="btn btn-success"
+              [disabled]="!unitForm.form.valid || isLoading()">
+              {{ (isLoading() ? 'COMMON.SAVING' : 'COMMON.SAVE') | translate }}
+            </button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,180 @@
+.maintenance-container {
+  width: 100%;
+  padding: 1.5rem;
+  box-sizing: border-box;
+}
+
+.header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.page-title {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.lang-select {
+  padding: 6px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+  background-color: #ffffff;
+  outline: none;
+  color: #0f172a;
+  font-weight: 500;
+}
+
+.divider {
+  border: 0;
+  border-top: 1px solid #cbd5e1;
+  margin: 1rem 0 1.5rem 0;
+}
+
+/* Side-by-Side Instant Layout (No bounce transitions) */
+.dual-view-container {
+  display: flex;
+  flex-direction: row;
+  gap: 1.25rem;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.grid-pane {
+  flex: 1 1 100%;
+  min-width: 0;
+  /* Removed CSS transitions to eliminate the bounce effect on open */
+
+  &.pane-contracted {
+    flex: 0 0 58%;
+  }
+}
+
+.form-pane {
+  flex: 0 0 40%;
+  min-width: 0;
+}
+
+.pane-title {
+  margin: 0 0 1rem 0;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.card {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  padding: 1rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  
+  label {
+    color: #1e293b;
+  }
+
+  input {
+    border: 1px solid #cbd5e1;
+    border-radius: 4px;
+    padding: 8px;
+    width: 100%;
+    box-sizing: border-box;
+    color: #0f172a;
+    
+    &:focus {
+      outline: none;
+      border-color: #2563eb;
+    }
+  }
+}
+
+.checkbox-field {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #0f172a;
+
+  input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+  }
+}
+
+.button-group {
+  display: flex;
+  gap: 8px;
+  margin-top: 1rem;
+}
+
+.btn {
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  border: none;
+  font-weight: 600;
+
+  &-primary { background-color: #2563eb; color: white; }
+  &-success { background-color: #16a34a; color: white; }
+  &-secondary { background-color: #64748b; color: white; }
+  &-outline-secondary { background: transparent; border: 1px solid #64748b; color: #334155; }
+  &-sm { padding: 4px 10px; font-size: 0.875rem; }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+/* Clear Darker Text and Sharper Table Borders */
+.cell-dark {
+  color: #0f172a !important;
+  font-weight: 500;
+}
+
+.font-bold { font-weight: 700; }
+.font-medium { font-weight: 600; }
+.text-center { text-align: center; }
+.required-star { color: #dc2626; }
+.error-text { color: #dc2626; font-size: 0.75rem; font-weight: 500; }
+.status-active { color: #15803d; font-weight: 700; }
+.status-inactive { color: #b91c1c; font-weight: 700; }
+
+/* PrimeNG Table High-Contrast Overrides */
+:host ::ng-deep .p-datatable {
+  border: 1px solid #cbd5e1;
+
+  .p-datatable-thead > tr > th {
+    background-color: #f1f5f9;
+    border-bottom: 2px solid #cbd5e1;
+    border-right: 1px solid #cbd5e1;
+    padding: 10px 12px;
+    color: #0f172a;
+    font-weight: 700;
+  }
+
+  .p-datatable-tbody > tr > td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #e2e8f0;
+    border-right: 1px solid #f1f5f9;
+    color: #0f172a;
+  }
+
+  .p-datatable-tbody > tr:nth-child(even) {
+    background-color: #f8fafc;
+  }
+}

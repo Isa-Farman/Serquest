@@ -1,0 +1,31 @@
+{
+  "BUSINESS_UNIT": {
+    "TITLE": "Business Unit Maintenance",
+    "LIST_TITLE": "Business Units List",
+    "CREATE_TITLE": "Create Business Unit",
+    "EDIT_TITLE": "Edit Business Unit",
+    "ADD_NEW": "+ Add New Business Unit",
+    "CODE": "Business Unit Code",
+    "NAME": "Business Unit Name",
+    "ADDRESS": "Address Line 1",
+    "PHONE": "Telephone Number",
+    "DISTRICT": "District",
+    "LOGO": "Logo URL/Filename",
+    "STATUS": "Status",
+    "ACTIVE": "Active",
+    "INACTIVE": "Inactive",
+    "ACTION": "Action",
+    "NO_RECORDS": "No Business Units found.",
+    "LOADING": "Loading data..."
+  },
+  "COMMON": {
+    "CANCEL": "Cancel",
+    "SAVE": "Save",
+    "SAVING": "Saving...",
+    "EDIT": "Edit"
+  },
+  "VALIDATION": {
+    "CODE_REQUIRED": "Business Unit Code is required.",
+    "NAME_REQUIRED": "Business Unit Name is required."
+  }
+}

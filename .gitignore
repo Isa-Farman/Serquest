@@ -1,0 +1,15 @@
+# Visual Studio temporary files & cache
+.vs/
+bin/
+obj/
+*.user
+*.suo
+
+# Node / Angular build files
+node_modules/
+.angular/
+dist/
+
+# Operating system files
+Thumbs.db
+.DS_Store

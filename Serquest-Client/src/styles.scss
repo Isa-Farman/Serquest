@@ -1,0 +1,117 @@
+/* src/styles.scss */
+@import "primeicons/primeicons.css";
+
+/* Force system font and light-mode color defaults */
+:root {
+  color-scheme: light;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  background-color: #f8fafc;
+  color: #1e293b;
+  margin: 0;
+  padding: 0;
+}
+
+/* Card Styling Reset */
+.card {
+  background-color: #ffffff !important;
+  color: #1e293b !important;
+  border: 1px solid #e2e8f0;
+}
+
+/* Form Labels & Titles Fix */
+h2, h3, h4, label {
+  color: #0f172a !important;
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+  font-size: 0.875rem;
+}
+
+/* Form Inputs Styling Reset */
+input[type="text"],
+select,
+.form-control {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  border: 1px solid #cbd5e1 !important;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  transition: all 0.2s ease-in-out;
+}
+
+input[type="text"]:focus,
+select:focus {
+  outline: none;
+  border-color: #2563eb !important;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15) !important;
+}
+
+/* Checkbox Alignment */
+input[type="checkbox"] {
+  width: 1.125rem;
+  height: 1.125rem;
+  accent-color: #2563eb;
+  cursor: pointer;
+}
+
+/* Action Buttons Styling */
+.btn {
+  font-weight: 500;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.15s ease-in-out;
+}
+
+.btn-primary {
+  background-color: #2563eb;
+  color: #ffffff;
+  &:hover { background-color: #1d4ed8; }
+}
+
+.btn-secondary {
+  background-color: #64748b;
+  color: #ffffff;
+  &:hover { background-color: #475569; }
+}
+
+.btn-success {
+  background-color: #16a34a;
+  color: #ffffff;
+  &:hover { background-color: #15803d; }
+}
+
+.btn-outline-secondary {
+  background-color: transparent;
+  border: 1px solid #cbd5e1;
+  color: #334155;
+  &:hover { background-color: #f1f5f9; }
+}
+
+/* PrimeNG Table Light Theme Enforcements */
+.p-datatable {
+  .p-datatable-thead > tr > th {
+    background-color: #f1f5f9 !important;
+    color: #334155 !important;
+    font-weight: 600;
+    font-size: 0.875rem;
+  }
+
+  .p-datatable-tbody > tr {
+    background-color: #ffffff !important;
+    color: #0f172a !important;
+    
+    &:nth-child(even) {
+      background-color: #f8fafc !important;
+    }
+  }
+}
