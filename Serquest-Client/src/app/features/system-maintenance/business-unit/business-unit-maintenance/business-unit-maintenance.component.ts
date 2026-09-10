@@ -17,7 +17,7 @@ import { CardModule } from 'primeng/card';
   imports: [
     CommonModule,
     FormsModule,
-    TranslatePipe, // <-- Use TranslatePipe here
+    TranslatePipe,
     TableModule,
     InputTextModule,
     CheckboxModule,

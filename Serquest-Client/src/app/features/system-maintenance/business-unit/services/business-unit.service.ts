@@ -9,7 +9,6 @@ import { BusinessUnit } from '../models/business-unit.model';
 export class BusinessUnitService {
   private readonly http = inject(HttpClient);
 
-  // Updated to match your backend port (5098)
   private readonly apiUrl = 'http://localhost:5098/api/businessunit'; 
 
   getAll(): Observable<BusinessUnit[]> {

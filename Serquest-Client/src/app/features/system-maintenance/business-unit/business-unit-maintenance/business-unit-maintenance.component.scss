@@ -39,7 +39,6 @@
   margin: 1rem 0 1.5rem 0;
 }
 
-/* Side-by-Side Instant Layout (No bounce transitions) */
 .dual-view-container {
   display: flex;
   flex-direction: row;
@@ -51,7 +50,6 @@
 .grid-pane {
   flex: 1 1 100%;
   min-width: 0;
-  /* Removed CSS transitions to eliminate the bounce effect on open */
 
   &.pane-contracted {
     flex: 0 0 58%;
@@ -140,7 +138,6 @@
   }
 }
 
-/* Clear Darker Text and Sharper Table Borders */
 .cell-dark {
   color: #0f172a !important;
   font-weight: 500;
@@ -154,7 +151,6 @@
 .status-active { color: #15803d; font-weight: 700; }
 .status-inactive { color: #b91c1c; font-weight: 700; }
 
-/* PrimeNG Table High-Contrast Overrides */
 :host ::ng-deep .p-datatable {
   border: 1px solid #cbd5e1;
 
